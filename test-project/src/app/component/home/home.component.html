@@ -1,0 +1,92 @@
+<section>
+  <div class="navButtonRow">
+    <button mat-button color="primary" routerLink="/">Home</button>
+    <button mat-button color="warn" (click)="logout()">Logout</button>
+  </div>
+</section>
+
+<mat-card>
+  <mat-card-title>
+    <label class="title">
+      <h1>Hi {{employee?.firstName}}!</h1>
+    </label>
+    <br>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <label class="subTitle">
+      <h5>Employee List
+      <button class="btn btn-sm btn-success" routerLink="/add-employee">Add Employee</button>
+      </h5>
+    </label>
+    <br>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Searching . . ." #input>
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+          <td mat-cell *matCellDef="let row" (click)="goDetail(row.id)"> {{row.firstName}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+          <td mat-cell *matCellDef="let row" (click)="goDetail(row.id)"> {{row.lastName}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let row" (click)="goDetail(row.id)"> {{row.email}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="birthDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Birth Date </th>
+          <td mat-cell *matCellDef="let row" (click)="goDetail(row.id)"> {{row.birthDate}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="basicSalary">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Basic Salary </th>
+          <td mat-cell *matCellDef="let row" (click)="goDetail(row.id)"> {{row.basicSalary}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="group">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Group </th>
+          <td mat-cell *matCellDef="let row" (click)="goDetail(row.id)"> {{row.group}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+          <td mat-cell *matCellDef="let row" (click)="goDetail(row.id)"> {{row.description}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button class="btn btn-sm btn-warning me-1" (click)="onEdit(row.id)">Edit</button>
+            <button class="btn btn-sm btn-danger btn-delete-user" (click)="deleteUser(row.id)" [disabled]="row.status">
+                <span *ngIf="row.status">Delete</span>
+                <span *ngIf="!row.status">Delete</span>
+            </button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="8" style="text-align: center;padding: 50px;"> Data not found "{{input.value}}"</td>
+        </tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </mat-card-content>
+  <mat-card-footer class="footer">
+    <label>
+      Copyright by Kevin Huang - Frontend Developer Angular and Ionic
+    </label>
+  </mat-card-footer>
+</mat-card>

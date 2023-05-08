@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 250px;
+}
+
+.regisForm{
+  display: flex;
+  justify-content: center;
+}
+
+.mat-mdc-card {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 50px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.error {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: center ;
+  gap: 20px;
+}

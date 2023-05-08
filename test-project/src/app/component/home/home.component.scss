@@ -1,0 +1,42 @@
+::ng-deep{
+  .mat-sort-header-content {
+      text-align: left !important;
+  }
+}
+
+section {
+  display: table;
+}
+
+.navButtonRow {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.navButtonRow .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.footer{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.title {
+  margin: 20px
+}
+
+.subTitle {
+  margin: 20px;
+}
+

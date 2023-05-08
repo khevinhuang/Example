@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="regisForm" (ngSubmit)="onSubmit()">
+      <div class="regisForm">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+      </div>
+      <div class="regisForm">
+        <mat-form-field>
+          <input type="text" matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+      </div>
+      <div class="regisForm">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div class="regisForm">
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </div>
+      
+      <mat-error class="error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </mat-error>
+
+      <div class="button">
+        <button [disabled]="isloading" class="btn btn-success">
+          <span *ngIf="isloading" class="spinner-border spinner-border-sm me-1"></span>
+          Submit
+        </button>
+        <button class="btn btn-danger" (click)="onCancel()">
+          Cancel
+        </button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

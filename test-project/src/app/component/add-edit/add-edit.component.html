@@ -1,0 +1,70 @@
+<mat-card>
+  <mat-card-title >{{title}}</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="addForm">
+        <mat-form-field>
+          <input type="text" matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div class="addForm">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="email" matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="addForm">
+        <mat-form-field>
+          <input type="input" matInput placeholder="Birth Date" formControlName="birthDate">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Basic Salary" formControlName="basicSalary">
+        </mat-form-field>
+      </div>
+      <div class="addForm">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Group" formControlName="group">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Description" formControlName="description">
+        </mat-form-field>
+      </div>
+      <div class="addForm" *ngIf="!isHide">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Status" formControlName="status">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </div>
+      <div class="addForm" *ngIf="isHide">
+        <mat-form-field>
+          <input matInput [disabled]="true" [value]="status">
+        </mat-form-field>
+      </div>
+      
+      <mat-error class="error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </mat-error>
+
+      <div class="button">
+        <button *ngIf="!isHide" [disabled]="submitting" class="btn btn-success">
+          <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+          Save
+        </button>
+        <button *ngIf="!isHide" class="btn btn-danger" (click)="onCancel()">
+          Cancel
+        </button>
+        <button *ngIf="isHide" class="btn btn-danger" (click)="onCancel()">
+          Close
+        </button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
